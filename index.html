@@ -792,8 +792,8 @@
 </div>
 
 <script>
-  // رابط Web App من Apps Script
-  const API_URL = "https://script.google.com/macros/s/AKfycbyjce65LF4D10fD2KqZTg6O-IhyVQH9r_vHWuVrolQ7cu6ExB_Z4yBKhgtdJoJEVqi78Q/exec";
+  // رابط Web App من Apps Script (الخلفية)
+const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNggrWcv7OtnNti9iGAEpWdF6L7ytzCbJ4KJDtjapbA0IqzvA/exec";
 
   // رقم الواتساب (بدون +)
   const WHATSAPP_PHONE = "963957482415";
@@ -1163,15 +1163,19 @@
 
   /*********** لوحة الإدارة – الطلبات ***********/
   async function adminLogin() {
-    const password = document.getElementById('adminPassword').value;
+    const password = document.getElementById('adminPassword').value.trim();
     if (!password) return;
+
     ADMIN_TOKEN = password;
 
-    document.getElementById('adminStatus').textContent = 'جاري تحميل الطلبات...';
-    document.getElementById('adminStatus').className = 'status-message';
-    await loadAdminOrders();
+    const statusDiv = document.getElementById('adminStatus');
+    statusDiv.textContent = 'جاري تحميل الطلبات...';
+    statusDiv.className = 'status-message';
 
-    if (ADMIN_ORDERS.length) {
+    const ok = await loadAdminOrders();
+
+    // لو تسجيل الدخول ناجح حتى لو ما في طلبات، نعرض لوحة الإدارة
+    if (ok) {
       document.getElementById('adminArea').style.display = 'block';
     }
   }
@@ -1184,7 +1188,7 @@
     if (!ADMIN_TOKEN) {
       statusDiv.textContent = 'أدخل كلمة السر أولاً.';
       statusDiv.className = 'status-message error';
-      return;
+      return false;
     }
 
     try {
@@ -1197,7 +1201,7 @@
       if (!data.success) {
         statusDiv.textContent = 'فشل تسجيل الدخول. تحقق من كلمة السر.';
         statusDiv.className = 'status-message error';
-        return;
+        return false;
       }
 
       ADMIN_ORDERS = data.orders || [];
@@ -1205,9 +1209,12 @@
       statusDiv.className = 'status-message success';
 
       renderAdminOrdersList_();
+      return true; // نجاح الدخول
+
     } catch (err) {
       statusDiv.textContent = 'حدث خطأ في تحميل الطلبات: ' + err.message;
       statusDiv.className = 'status-message error';
+      return false;
     }
   }
 

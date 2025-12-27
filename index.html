@@ -257,7 +257,7 @@
     }
 
     @media (max-width: 720px) {
-      .two-cols {
+      .two-cols = {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -792,8 +792,8 @@
 </div>
 
 <script>
-  // رابط Web App من Apps Script (الخلفية)
-const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNggrWcv7OtnNti9iGAEpWdF6L7ytzCbJ4KJDtjapbA0IqzvA/exec";
+  // رابط Web App من Apps Script (الجديد)
+  const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNggrWcv7OtnNti9iGAEpWdF6L7ytzCbJ4KJDtjapbA0IqzvA/exec";
 
   // رقم الواتساب (بدون +)
   const WHATSAPP_PHONE = "963957482415";
@@ -1165,7 +1165,6 @@ const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNg
   async function adminLogin() {
     const password = document.getElementById('adminPassword').value.trim();
     if (!password) return;
-
     ADMIN_TOKEN = password;
 
     const statusDiv = document.getElementById('adminStatus');
@@ -1174,7 +1173,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNg
 
     const ok = await loadAdminOrders();
 
-    // لو تسجيل الدخول ناجح حتى لو ما في طلبات، نعرض لوحة الإدارة
+    // ✅ حتى لو ما في طلبات، طالما كلمة السر صحيحة، ندخل لوحة الإدارة
     if (ok) {
       document.getElementById('adminArea').style.display = 'block';
     }
@@ -1209,8 +1208,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNg
       statusDiv.className = 'status-message success';
 
       renderAdminOrdersList_();
-      return true; // نجاح الدخول
-
+      return true;
     } catch (err) {
       statusDiv.textContent = 'حدث خطأ في تحميل الطلبات: ' + err.message;
       statusDiv.className = 'status-message error';

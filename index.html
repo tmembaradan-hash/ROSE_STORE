@@ -5,17 +5,16 @@
   <title>متجر روز للتجارة العامة</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- شعار المتجر من GitHub -->
+  <!-- شعار المتجر (عدّل اسم الملف إذا لزم) -->
   <link rel="icon" type="image/png"
-        href="https://raw.githubusercontent.com/tmembaradan-hash/ROSE_STORE/main/ose-logo.png">
+        href="https://raw.githubusercontent.com/tmembaradan-hash/ROSE_STORE/main/rose-logo.png">
 
   <style>
     :root {
-      /* ألوان قريبة من شعار ROSE (عنابي + ذهبي) */
-      --primary-dark: #6b1230;   /* عنابي غامق */
-      --primary: #b56a2b;        /* ذهبي مائل للنحاسي */
+      --primary-dark: #6b1230;
+      --primary: #b56a2b;
       --gold-soft: #f7e2b8;
-      --bg: #fdf7f5;             /* خلفية فاتحة */
+      --bg: #fdf7f5;
       --card: #ffffff;
       --radius: 16px;
     }
@@ -58,9 +57,10 @@
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      object-fit: cover;
+      object-fit: contain;
+      /* خلفية افتراضية في حال لم تُحمّل الصورة — حل مشكلة عدم ظهور الشعار على الموبايل */
+      background: radial-gradient(circle at top, #fbe2a8, #b56a2b);
       box-shadow: 0 0 0 3px rgba(255,215,128,0.8);
-      background: #fff;
       flex-shrink: 0;
     }
 
@@ -126,7 +126,7 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* قائمة المنتجات */
+    /* قائمة المنتجات - ستايل قريب من SHEIN على الموبايل */
     .menu-controls {
       display: flex;
       gap: 8px;
@@ -173,7 +173,6 @@
       height: 250px;
       background-size: cover;
       background-position: top center;
-      border-radius: 12px;
     }
 
     .menu-content {
@@ -719,7 +718,7 @@
       color: #777;
     }
 
-    /* موبايل */
+    /* موبايل – شبيه SHEIN: كارت كامل العرض، صورة كبيرة */
     @media (max-width: 720px) {
       body {
         font-size: 15px;
@@ -770,8 +769,13 @@
         grid-template-columns: 1fr;
       }
 
+      /* كارت منتج واحد في الصف مثل SHEIN */
+      .menu-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .menu-img {
-        height: 210px;
+        height: 260px;
       }
     }
   </style>
@@ -781,11 +785,11 @@
 <header>
   <div class="header-inner">
     <div class="header-top">
-      <img src="https://raw.githubusercontent.com/tmembaradan-hash/ROSE_STORE/main/ose-logo.png"
+      <img src="https://raw.githubusercontent.com/tmembaradan-hash/ROSE_STORE/main/rose-logo.png"
            alt="ROSE GENERAL TRADE" class="header-logo">
       <div class="header-text">
         <h1>ROSE GENERAL TRADE</h1>
-        <p>متجر روز – تجربة شراء أنيقة وسهلة 🌹</p>
+        <p>متجر بطاقات ومنتجات رقمية وملموسة – تجربة شراء أنيقة وسهلة 🌹</p>
       </div>
     </div>
 
@@ -944,14 +948,14 @@
 </div>
 
 <div class="footer">
-  ROSE GENERAL TRADE © 2025 — محمود البردان 0957482415 تم تطوير هذه الواجهة باستخدام 
+  ROSE GENERAL TRADE © 2025 — تم تطوير هذه الواجهة باستخدام Google Apps Script وGoogle Sheets
 </div>
 
 <!-- زر واتساب -->
 <div class="whatsapp-button" onclick="openWhatsApp()" aria-label="التواصل عبر واتساب">
   <svg viewBox="0 0 32 32" aria-hidden="true">
     <circle cx="16" cy="16" r="16" fill="none"></circle>
-    <path fill="#ffffff" d="M16 6.4c-4.7 0-8.6 3.7-8.6 8.3 0 1.5.4 2.9 1.2 4.2l-0.8 3 3.1-0.8c1.2.7 2.6 1.1 4.1 1.1 4.7 0 8.6-3.7 8.6-8.3S20.7 6.4 16 6.4zm0 14.7c-1.3 0-2.6-.3-3.7-1l-0.3-.2-1.9.5.5-1.8-0.2-.3c-.7-1-1.1-2.2-1.1-3.4 0-3.4 2.8-6.1 6.3-6.1s6.3 2.7 6.3 6.1-2.8 6.1-6.3 6.1zm3.4-4.6c-0.2-.1-1.3-.6-1.5-.7s-.4-.1-.6.1c-.2.2-.7.7-.8.8-.1.1-.3.2-.6.1s-1.2-.5-2.3-1.5c-.8-.7-1.3-1.6-1.4-1.8s0-0.4.1-0.5c.1-.1.2-.3.3-.4.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3 0-.1 0-.2 0-.3s0-.2 0-.3c0-.1-.1-.3-.2-.4-.1-.1-.6-1.4-.9-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.4 1 2.5c.1.1 1.8 2.9 4.3 4.1.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z"></path>
+    <path fill="#ffffff" d="M16 6.4c-4.7 0-8.6 3.7-8.6 8.3 0 1.5.4 2.9 1.2 4.2l-0.8 3 3.1-0.8c1.2.7 2.6 1.1 4.1 1.1 4.7 0 8.6-3.7 8.6-8.3S20.7 6.4 16 6.4zm0 14.7c-1.3 0-2.6-.3-3.7-1l-0.3-.2-1.9.5.5-1.8-0.2-.3c-.7-1-1.1-2.2-1.1-3.4 0-3.4 2.8-6.1 6.3-6.1s6.3 2.7 6.3 6.1-2.8 6.1-6.3 6.1zm3.4-4.6c-0.2-.1-1.3-.6-1.5-.7s-.4-.1-.6.1c-.2.2-.7.7-.8.8-.1.1-.3.2-.6.1s-1.2-.5-2.3-1.5c-.8-.7-1.3-1.6-1.4-1.8s0-0.4.1-0.5c.1-.1.2-.3.3-.4.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3 0-.1 0-.2 0-.3s0-.2 0-.3c0-.1-.1-.3-.2-.4-.1-.1-.6-1.4-.9-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.4 1 2.5c.1.1 1.8 2.9 4.3 4.1.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z"></path>
   </svg>
 </div>
 
@@ -982,18 +986,15 @@
 </div>
 
 <script>
-  // رابط Web App من Apps Script (الجديد)
   const API_URL = "https://script.google.com/macros/s/AKfycbwX8Rzkf6duSsH3RRABNkNggrWcv7OtnNti9iGAEpWdF6L7ytzCbJ4KJDtjapbA0IqzvA/exec";
-
-  // رقم الواتساب (بدون +)
   const WHATSAPP_PHONE = "963957482415";
 
   let PRODUCTS = [];
   let CART = [];
   let ADMIN_TOKEN = '';
   let ADMIN_ORDERS = [];
+  let audioCtx = null;   // للصوت عند إضافة للسلة
 
-  /*********** أدوات عامة ***********/
   function escapeHtml_(str) {
     return (str || '').toString()
       .replace(/&/g, '&amp;')
@@ -1008,7 +1009,6 @@
     return d.toLocaleString('ar-SY');
   }
 
-  /*********** تبويبات ***********/
   document.querySelectorAll('.nav-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -1021,7 +1021,6 @@
     });
   });
 
-  /*********** تحميل المنتجات ***********/
   async function loadProducts() {
     try {
       const res = await fetch(API_URL + '?action=getProducts');
@@ -1120,7 +1119,29 @@
   document.getElementById('searchInput').addEventListener('input', renderProducts);
   document.getElementById('categoryFilter').addEventListener('change', renderProducts);
 
-  /*********** السلة ***********/
+  /* صوت بسيط عند إضافة للسلة */
+  function playAddSound_() {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      if (!audioCtx) audioCtx = new Ctx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = 880;
+      gain.gain.value = 0.08;
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.09);
+    } catch (e) {
+      // تجاهل أي خطأ (بعض المتصفحات قد تمنع الصوت)
+    }
+  }
+
   function addToCart(productId) {
     const item = PRODUCTS.find(m => m.id == productId);
     if (!item) return;
@@ -1138,6 +1159,7 @@
     renderCart();
     bumpCartAnimation_();
     feedback_();
+    playAddSound_();  // 🔊 تشغيل الصوت
   }
 
   function bumpCartAnimation_() {
@@ -1196,7 +1218,6 @@
     totalDiv.textContent = 'المجموع: ' + total + ' ل.س';
   }
 
-  /*********** إرسال الطلب ***********/
   async function submitOrder() {
     if (!CART.length) {
       showStatus('السلة فارغة، أضف منتجات أولاً.', false);
@@ -1256,7 +1277,6 @@
 
   document.getElementById('submitOrderBtn').addEventListener('click', submitOrder);
 
-  /*********** زر واتساب ***********/
   function openWhatsApp() {
     const base = "https://wa.me/" + WHATSAPP_PHONE;
 
@@ -1292,7 +1312,6 @@
     window.open(url, "_blank");
   }
 
-  /*********** تتبع الطلب ***********/
   async function trackOrders() {
     const orderId = document.getElementById('trackOrderId').value.trim();
     const phone = document.getElementById('trackPhone').value.trim();
@@ -1351,7 +1370,6 @@
 
   document.getElementById('trackBtn').addEventListener('click', trackOrders);
 
-  /*********** لوحة الإدارة – الطلبات ***********/
   async function adminLogin() {
     const password = document.getElementById('adminPassword').value.trim();
     if (!password) return;
@@ -1362,8 +1380,6 @@
     statusDiv.className = 'status-message';
 
     const ok = await loadAdminOrders();
-
-    // حتى لو لا توجد طلبات، طالما كلمة السر صحيحة، ندخل لوحة الإدارة
     if (ok) {
       document.getElementById('adminArea').style.display = 'block';
     }
@@ -1542,7 +1558,6 @@
   document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
   document.getElementById('adminStatusFilter').addEventListener('change', renderAdminOrdersList_);
 
-  /*********** لوحة الإدارة – المنتجات ***********/
   async function addProduct() {
     if (!ADMIN_TOKEN) {
       document.getElementById('prodStatus').textContent = 'سجّل الدخول أولاً.';
@@ -1580,7 +1595,6 @@
       document.getElementById('prodStatus').textContent = 'تم حفظ المنتج بنجاح 🌹';
       document.getElementById('prodStatus').className = 'status-message success';
 
-      // تفريغ الحقول
       document.getElementById('prodName').value = '';
       document.getElementById('prodCategory').value = '';
       document.getElementById('prodPrice').value = '';
@@ -1588,7 +1602,6 @@
       document.getElementById('prodTags').value = '';
       document.getElementById('prodDescription').value = '';
 
-      // إعادة تحميل المنتجات
       await loadProducts();
     } catch (err) {
       document.getElementById('prodStatus').textContent = 'خطأ في حفظ المنتج: ' + err.message;
@@ -1606,7 +1619,7 @@
       return;
     }
 
-    const latest = [...PRODUCTS].slice(-20).reverse(); // آخر 20 منتج
+    const latest = [...PRODUCTS].slice(-20).reverse();
     latest.forEach(p => {
       const row = document.createElement('div');
       row.className = 'admin-product-item';
@@ -1631,7 +1644,7 @@
 
   document.getElementById('addProductBtn').addEventListener('click', addProduct);
 
-  /*********** المساعد الذكي ***********/
+  /* المساعد الذكي */
   function toggleAssistant() {
     const panel = document.getElementById('assistantPanel');
     panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
@@ -1641,7 +1654,7 @@
     const body = document.getElementById('assistantBody');
     const div = document.createElement('div');
     div.className = 'assistant-message ' + type;
-    div.innerHTML = escapeHtml_((text)).replace(/\n/g, '<br>');
+    div.innerHTML = escapeHtml_(text).replace(/\n/g, '<br>');
     body.appendChild(div);
     body.scrollTop = body.scrollHeight;
   }
@@ -1662,38 +1675,35 @@
 
   function respondAssistant(text) {
     const t = text.toLowerCase();
-
     let answer = "شكراً لسؤالك 🌹 سيتم الرد عليك من إدارة المتجر قريباً.";
 
     if (t.includes('كيف أطلب') || t.includes('طريقة الطلب') || t.includes('اطلب')) {
       answer =
-        "طريقة الطلب سهلة جداً:\n" +
-        "1️⃣ اختر المنتجات من قائمة المنتجات واضغط \"إضافة للسلة\".\n" +
-        "2️⃣ املأ بيانات الاسم ورقم الموبايل والعنوان.\n" +
-        "3️⃣ اضغط زر \"إرسال الطلب\".\n" +
-        "سيتواصل معك فريق ROSE GENERAL TRADE عبر الواتساب لتأكيد الطلب والدفع.";
+        "طريقة الطلب:\n" +
+        "1️⃣ اختر المنتجات واضغط \"إضافة للسلة\".\n" +
+        "2️⃣ املأ الاسم ورقم الموبايل والعنوان.\n" +
+        "3️⃣ اضغط \"إرسال الطلب\"؛ سيتم التواصل معك عبر الواتساب لتأكيد الطلب.";
     } else if (t.includes('طرق الدفع') || t.includes('كيف ادفع') || t.includes('الدفع')) {
       answer =
-        "طرق الدفع المتاحة تختلف حسب المنطقة، وعادةً تشمل:\n" +
-        "• الدفع عند الاستلام.\n" +
-        "• تحويل بنكي أو عبر شركات الحوالة المتاحة.\n" +
-        "سيتم إبلاغك بطريقة الدفع المناسبة عند تأكيد الطلب على الواتساب.";
+        "طرق الدفع المتاحة عادةً:\n" +
+        "• الدفع عند الاستلام (حسب المنطقة).\n" +
+        "• تحويل بنكي أو عبر شركات الحوالة المتوفرة.\n" +
+        "سنخبرك بالتفاصيل عند تأكيد الطلب على الواتساب.";
     } else if (t.includes('تتبع') || t.includes('حالة الطلب') || t.includes('وين طلبي')) {
       answer =
-        "لتتبع حالة الطلب:\n" +
-        "1️⃣ افتح تبويب \"تتبع الطلب\" في أعلى الصفحة.\n" +
-        "2️⃣ أدخل رقم الطلب (مثال: ORD-5) أو رقم الموبايل الذي استخدمته في الطلب.\n" +
-        "3️⃣ اضغط \"عرض الحالة\" وستظهر لك حالة الطلب والمجموع.";
+        "لتتبع الطلب:\n" +
+        "1️⃣ افتح تبويب \"تتبع الطلب\".\n" +
+        "2️⃣ أدخل رقم الطلب أو رقم الموبايل.\n" +
+        "3️⃣ اضغط \"عرض الحالة\" لتشاهد حالة الطلب والمجموع.";
     } else if (t.includes('التوصيل') || t.includes('داخل المدينة') || t.includes('الشحن')) {
       answer =
-        "خدمة التوصيل تعتمد على المدينة والمنطقة.\n" +
-        "غالباً يتوفر التوصيل داخل المدينة برسوم بسيطة، ويتم توضيح تفاصيل الشحن (الوقت والتكلفة) عند تأكيد الطلب عبر الواتساب.";
+        "التوصيل متاح حسب المدينة والمنطقة.\n" +
+        "رسوم ووقت التوصيل يتم تأكيدها معك عند إتمام الطلب على الواتساب.";
     }
 
     addAssistantMessage(answer, 'bot');
   }
 
-  /*********** تهيئة ***********/
   document.addEventListener('DOMContentLoaded', () => {
     const savedPhone = localStorage.getItem('roseCustomerPhone') || '';
     const savedName = localStorage.getItem('roseCustomerName') || '';

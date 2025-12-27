@@ -849,10 +849,10 @@
   <div class="header-inner">
     <div class="header-top">
       <img src="https://raw.githubusercontent.com/tmembaradan-hash/ROSE_STORE/main/ose-logo.png"
-           alt="ROSE GENERAL TRADE" class="header-logo">
+           alt="ROSE " class="header-logo">
       <div class="header-text">
-        <h1>ROSE GENERAL TRADE</h1>
-        <p>متجر بطاقات ومنتجات رقمية وملموسة – تجربة شراء أنيقة وسهلة 🌹</p>
+        <h1>ROSE </h1>
+        <p>متجر روز – تجربة شراء أنيقة وسهلة 🌹</p>
       </div>
     </div>
 
@@ -1462,7 +1462,7 @@
       const notes = document.getElementById('notes').value.trim();
       const total = CART.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-      lines.push("مرحبا، أريد تأكيد هذا الطلب من متجر ROSE GENERAL TRADE:");
+      lines.push("مرحبا، أريد تأكيد هذا الطلب من متجر ROSE :");
       lines.push("");
 
       CART.forEach(item => {
@@ -1483,7 +1483,7 @@
       if (notes)       lines.push("ملاحظات: " + notes);
 
     } else {
-      lines.push("مرحبا، أريد الاستفسار عن منتجات متجر ROSE GENERAL TRADE.");
+      lines.push("مرحبا، أريد الاستفسار عن منتجات متجر ROSE .");
     }
 
     const text = encodeURIComponent(lines.join("\n"));

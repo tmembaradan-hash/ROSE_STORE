@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- شعار المتجر من GitHub -->
- <link rel="icon" type="image/png" href="ose-logo.png">
-<!-- أو لو كان داخل مجلد مثلاً images:  href="images/ose-logo.png" -->
-
-
+  <link rel="icon" type="image/png" href="ose-logo.png">
+  <!-- أو لو كان داخل مجلد مثلاً images:  href="images/ose-logo.png" -->
 
   <style>
     :root {
@@ -707,7 +705,6 @@
       z-index: 999;
       display: none;
       overflow: hidden;
-      display: none;
       font-size: 0.8rem;
     }
 
@@ -850,8 +847,8 @@
 <header>
   <div class="header-inner">
     <div class="header-top">
-<img src="ose-logo.png"
-     alt="ROSE GENERAL TRADE" class="header-logo">
+      <img src="ose-logo.png"
+           alt="ROSE GENERAL TRADE" class="header-logo">
 
       <div class="header-text">
         <h1>ROSE </h1>
@@ -1032,7 +1029,7 @@
 </div>
 
 <div class="footer">
-  ROSE GENERAL TRADE © 2025 — تم تطوير هذه الواجهة من قبل المهندس محمود البردان 0957482415 
+  ROSE GENERAL TRADE © 2025 — تم تطوير هذه الواجهة من قبل المهندس محمود البردان 0957482415
 </div>
 
 <!-- زر واتساب -->
@@ -1074,8 +1071,9 @@
   // رابط Web App من Apps Script
   const API_URL = "https://script.google.com/macros/s/AKfycbxQAfLqDAuKReZRtQ3L43bviiq8apWzDBMRemK9Jr6m7NK8XOdm_VU--VIMBYdJFGqm6A/exec";
 
-  // رقم الواتساب (بدون +)
-  const WHATSAPP_PHONE = "963940835021⁩";
+  // رقم الواتساب (بدون + أو 00)
+  // 00963940835021  -> نكتبه هكذا من أجل wa.me: 963940835021
+  const WHATSAPP_PHONE = "963940835021";
 
   let PRODUCTS = [];
   let CART = [];
@@ -1317,7 +1315,6 @@
     renderCart();
     bumpCartAnimation_();
     feedback_();
-    // فتح تبويب السلة تلقائياً على الموبايل (اختياري)
     // switchToCartTab_();
   }
 
